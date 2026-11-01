@@ -4,6 +4,48 @@ A Document Hub is a private web page for all your important links: course notes,
 
 This guide is for **students and individuals using a personal Google account** (a free Gmail account is fine). You do not need to know how to code. It takes about **30 to 40 minutes**.
 
+## See what you will get
+
+Here is the finished hub, running on sample data.
+
+<table>
+<tr>
+<td width="50%"><img src="images/demo-home.png" alt="Home page: a card for each topic, with how many documents are due for a revisit"><br><sub><b>Home</b>: one card per topic and your own welcome page</sub></td>
+<td width="50%"><img src="images/demo-library.png" alt="A topic page: shared documents on top, then documents due for revisit, then shelves of cards"><br><sub><b>A topic</b>: shelves of cards, plus a reminder strip for documents due</sub></td>
+</tr>
+<tr>
+<td width="50%"><img src="images/demo-filters.png" alt="A filter dropdown with tick boxes and counts"><br><sub><b>Filters</b>: tick several values at once</sub></td>
+<td width="50%"><img src="images/demo-add-link.png" alt="The Add document form after pasting a Google link: the title and details are filled in"><br><sub><b>Add a document</b>: paste a link and the title fills itself in</sub></td>
+</tr>
+<tr>
+<td width="50%"><img src="images/demo-insights.png" alt="Insights page with totals, bars and a donut chart"><br><sub><b>Insights</b>: charts that filter each other when you click</sub></td>
+<td width="50%"><img src="images/demo-governance.png" alt="Governance page listing who can view and edit each topic"><br><sub><b>Governance</b>: who can see and change what (for teams)</sub></td>
+</tr>
+</table>
+
+It also works on a phone:
+
+<img src="images/demo-phone.png" width="240" alt="A topic page on a phone">
+
+### Try it yourself before you build
+
+The demo is the **real hub** running on a pretend spreadsheet, so you can click everything. Nothing you do is saved to Google. Your changes stay only while the tab is open.
+
+- **Open it from your computer (easiest).** Double-click `docs/demo.html` from the starter kit. It opens in Chrome.
+- **Open it from your GitHub repo.** GitHub shows HTML files as plain text, so turn on GitHub Pages once:
+  1. Put the `docs` folder (with `demo.html` inside) in your repo.
+  2. Go to **Settings > Pages**. Under **Build and deployment**, set **Source** to **Deploy from a branch**, **Branch** to `main`, and the folder to **/docs**. Click **Save**.
+  3. Wait a minute or two. The page shows your link: `https://YOUR-USERNAME.github.io/YOUR-REPO/demo.html`. Paste that link at the top of your README.
+
+**Things to try in the demo**
+1. Click the **Demo** button (bottom left). Under **Try pasting a link**, click **Copy link** on the first sample.
+2. Open **Study**, click **Add document**, and paste the link. Watch the title and details fill in.
+3. Paste the third sample link (the private one). Nothing is filled in, and that is on purpose.
+4. In the **Demo** panel, use **View the hub as** to switch between **Owner**, **Editor** and **Viewer**. This shows what a classmate or teammate would see.
+5. Click **Reset demo** to start again.
+
+---
+
 ![How the pieces fit](images/how-it-fits.png)
 
 ## The whole process at a glance
@@ -34,9 +76,10 @@ Step 5  Deploy and open it            (Only myself > Deploy)          5 min
 - The files that came with this guide:
   - `document-hub-starter.xlsx` (your starting sheet)
   - `document-hub.zip` (the app: five files inside)
+  - `docs/demo.html` (optional: the interactive demo above)
 
 **Decide**
-- Which topics you want. The starter has two: **Study** and **Personal**. Each topic becomes its own tab and its own page.
+- Which topics you want. The starter has two: **Study** and **Personal**. Each topic becomes its own tab and its own page. (In the app, a topic is called a **workstream**.)
 
 **Good to know**
 - With a personal account the hub is **just for you**. Google does not tell the app who other visitors are, so it cannot share the page with friends. Section 7 explains your options.
@@ -85,16 +128,16 @@ Step 5  Deploy and open it            (Only myself > Deploy)          5 min
 
 | Where | Find | Change it to |
 |---|---|---|
-| `Code.gs` (line 7) | `var SS_ID = '…'` | your sheet ID from Step 1, between the quotes |
-| `Code.gs` (line 8) | `var DOMAIN = 'purestorage.com'` | the part of your email after the @, for example `'gmail.com'` |
-| `Code.gs` (line 9) | `var OWNER_SEED = '…'` | your full email, for example `'sam@gmail.com'` |
+| `Code.gs` (line 7) | `var SS_ID = 'PASTE_YOUR_SHEET_ID_HERE'` | your sheet ID from Step 1, between the quotes |
+| `Code.gs` (line 8) | `var DOMAIN = 'gmail.com'` | the part of your email after the @. Leave it if your email ends in `@gmail.com`. |
+| `Code.gs` (line 9) | `var OWNER_SEED = 'you@gmail.com'` | your full email, for example `'sam@gmail.com'` |
 | `appsscript.json` | `"access": "DOMAIN"` | `"access": "MYSELF"` |
 
 Optional: in `appsscript.json`, change `"timeZone"` to yours, for example `"Europe/London"`.
 
 5. Press **Ctrl+S** on every file to save.
 
-✅ **Check:** no file still says `purestorage.com` or `sngouv` in the lines above, and there are no red error marks.
+✅ **Check:** `Code.gs` no longer says `PASTE_YOUR_SHEET_ID_HERE` or `you@gmail.com` (unless that really is your email), and there are no red error marks.
 
 ---
 
@@ -151,7 +194,7 @@ What you can do instead:
   1. In `Code.gs`, set `DOMAIN` to your organisation's domain (for example `'school.edu'`).
   2. In `appsscript.json`, set `"access": "DOMAIN"`. When you deploy, choose **Anyone within (your domain)**.
 
-  People then open the link, request access, and you approve them in **Governance**.
+  People then open the link, request access, and you approve them in **Governance**. The demo's **View the hub as** menu shows what an editor or a viewer would see.
 
 ---
 
@@ -160,11 +203,11 @@ What you can do instead:
 | What | How |
 |---|---|
 | **App name** | In the `Config` tab, change `APP_TITLE`. Also find and replace `Document Hub` with your own name in `Setup.gs` and `Index.html`. |
-| **Logo** | The package carries the EverPure logo. In `Index.html` find `const LOGO=` and replace the long `data:image/png;base64,…` text with your own small PNG (about 80 × 72 pixels), converted with any "image to base64" tool. |
+| **Logo** | The package has a simple bookshelf icon. In `Index.html` find `const LOGO=` and replace the long `data:image/png;base64,…` text with your own small PNG (about 130 × 120 pixels), converted with any "image to base64" tool. |
 | **Colours** | In `Index.html`, find the block with `--orange`, `--ash` and `--cloud`, and change the colour codes. |
 | **Shelf order** | In the `Config` tab, list shelf names in `SHELF_ORDER`, separated by commas. |
 
-The EverPure logo and colours belong to someone else, so replace them before you share screenshots or show the hub to others.
+Use a logo you are allowed to use. The bookshelf icon and the warm colours are free to keep.
 
 ---
 
