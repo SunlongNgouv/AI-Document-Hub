@@ -33,7 +33,7 @@ Step 5  Deploy and open it            (Only myself > Deploy)          5 min
 - A **laptop or desktop with Chrome**. Do not try this on a phone.
 - The files that came with this guide:
   - `document-hub-starter.xlsx` (your starting sheet)
-  - `mercury-document-hub.zip` (the app: five files inside)
+  - `document-hub.zip` (the app: five files inside)
 
 **Decide**
 - Which topics you want. The starter has two: **Study** and **Personal**. Each topic becomes its own tab and its own page.
@@ -69,7 +69,7 @@ Step 5  Deploy and open it            (Only myself > Deploy)          5 min
 
 ## Step 3. Paste the files and change 4 lines (10 min)
 
-1. Unzip `mercury-document-hub.zip`. You will see `Code.gs`, `Setup.gs`, `Spec.gs`, `Index.html` and `appsscript.json`.
+1. Unzip `document-hub.zip`. You will see `Code.gs`, `Setup.gs`, `Spec.gs`, `Index.html` and `appsscript.json`.
 2. Open each file in **Notepad** (Windows) or **TextEdit** set to plain text (Mac: **Format > Make Plain Text**). Press **Ctrl+A** then **Ctrl+C** to copy.
 3. Paste each one into Apps Script:
 
@@ -100,8 +100,8 @@ Optional: in `appsscript.json`, change `"timeZone"` to yours, for example `"Euro
 
 ## Step 4. Run setup (5 min)
 
-1. Go back to your sheet tab and press **F5** to reload. After a few seconds a new menu appears next to **Help**. It is called **Mercury Document Hub** (you can rename it later).
-2. Click **Mercury Document Hub > Run setup**.
+1. Go back to your sheet tab and press **F5** to reload. After a few seconds a new menu appears next to **Help**. It is called **Document Hub** (you can rename it later).
+2. Click **Document Hub > Run setup**.
 3. Google asks for permission:
    - Click **Review permissions** and choose your account.
    - If it says **"Google hasn't verified this app"**, click **Advanced**, then **Go to (your project) (unsafe)**. This is your own script, so it is safe.
@@ -159,7 +159,7 @@ What you can do instead:
 
 | What | How |
 |---|---|
-| **App name** | In the `Config` tab, change `APP_TITLE`. Also find and replace `Mercury Document Hub` in `Setup.gs` and `Index.html`. |
+| **App name** | In the `Config` tab, change `APP_TITLE`. Also find and replace `Document Hub` with your own name in `Setup.gs` and `Index.html`. |
 | **Logo** | The package carries the EverPure logo. In `Index.html` find `const LOGO=` and replace the long `data:image/png;base64,…` text with your own small PNG (about 80 × 72 pixels), converted with any "image to base64" tool. |
 | **Colours** | In `Index.html`, find the block with `--orange`, `--ash` and `--cloud`, and change the colour codes. |
 | **Shelf order** | In the `Config` tab, list shelf names in `SHELF_ORDER`, separated by commas. |
@@ -187,7 +187,7 @@ The EverPure logo and colours belong to someone else, so replace them before you
 ## 10. Update later
 
 1. Replace the changed files in Apps Script, and check your four settings from Step 3 are still yours.
-2. In the sheet, click **Mercury Document Hub > Sync project spec**.
+2. In the sheet, click **Document Hub > Sync project spec**.
 3. In Apps Script click **Deploy > Manage deployments > pencil > Version: New version > Deploy**.
 
 Your link stays the same and your data is not touched.
@@ -196,7 +196,7 @@ Your link stays the same and your data is not touched.
 
 ## 11. Ask Claude to help
 
-If you get stuck or want changes, give Claude `mercury-document-hub.zip` and say:
+If you get stuck or want changes, give Claude `document-hub.zip` and say:
 
 > I am building a personal Document Hub with a personal Google account. Help me [fix this error / change the colours / add a new shelf]. Here is what I see: [paste the message or a screenshot].
 
@@ -204,9 +204,44 @@ If you get stuck or want changes, give Claude `mercury-document-hub.zip` and say
 
 ## Checklist
 
-- [ ] Sheet made from the starter file, row 3 untouched
-- [ ] Five files pasted into Apps Script, manifest shown
-- [ ] `SS_ID`, `DOMAIN`, `OWNER_SEED` and `"access": "MYSELF"` changed and saved
-- [ ] **Run setup** finished with "Setup complete"
-- [ ] Deployed as **Execute as: Me** and **Only myself**
-- [ ] Hub opened and bookmarked, first real document added
+Tick one box per action. Each group matches a step above.
+
+**Step 1: Sheet**
+- [ ] Created a new Google Sheet from the starter file
+- [ ] Renamed the sheet (for example, My Document Hub)
+- [ ] Left the column names in row 3 unchanged
+- [ ] Copied my sheet ID into a note
+
+**Step 2: Apps Script**
+- [ ] Opened **Extensions > Apps Script**
+- [ ] Turned on **Show "appsscript.json" manifest file in editor**
+
+**Step 3: Files**
+- [ ] Pasted `Code.gs`
+- [ ] Pasted `Setup.gs` (new script file)
+- [ ] Pasted `Spec.gs` (new script file)
+- [ ] Pasted `Index.html` (new HTML file)
+- [ ] Pasted `appsscript.json`
+
+**Step 3: Settings**
+- [ ] Set `SS_ID` to my sheet ID
+- [ ] Set `DOMAIN` to the part of my email after the @
+- [ ] Set `OWNER_SEED` to my full email
+- [ ] Set `"access": "MYSELF"` in `appsscript.json`
+- [ ] Saved every file with **Ctrl+S**
+
+**Step 4: Setup**
+- [ ] Reloaded the sheet and saw the **Document Hub** menu
+- [ ] Clicked **Run setup**
+- [ ] Allowed the permissions
+- [ ] Saw the "Setup complete" message
+
+**Step 5: Deploy**
+- [ ] Created a **New deployment** of type **Web app**
+- [ ] Chose **Execute as: Me**
+- [ ] Chose **Who has access: Only myself**
+- [ ] Copied the **Web app URL**
+- [ ] Opened the URL and bookmarked it
+
+**First use**
+- [ ] Added my first real document
